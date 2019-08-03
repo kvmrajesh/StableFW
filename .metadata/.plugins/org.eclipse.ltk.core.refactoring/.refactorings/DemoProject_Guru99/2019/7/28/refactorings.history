@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;SortMobileTest.java&apos; to &apos;DemoProject_Guru99/src/com.magento.mobile&apos;&#x0D;&#x0A;- Original project: &apos;DemoProject_Guru99&apos;&#x0D;&#x0A;- Destination element: &apos;DemoProject_Guru99/src/com.magento.mobile&apos;&#x0D;&#x0A;- Original element: &apos;com.magento.mobile.SortMobileTest.java&apos;" description="Copy compilation unit" destination="/src&lt;com.magento.mobile" element1="/src&lt;com.magento.mobile{SortMobileTest.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1562606337912" units="1" version="1.0"/>
+</session>

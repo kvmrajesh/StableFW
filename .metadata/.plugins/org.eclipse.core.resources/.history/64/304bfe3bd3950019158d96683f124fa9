@@ -1,0 +1,63 @@
+package com.magento.mobile;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class MobileTest {
+
+	public static String PageTitle = "Home page";
+
+	public static void main(String[] args) {
+		WebDriver driver = new FirefoxDriver();
+		
+		driver.manage().window().maximize();
+
+		// 1.
+		driver.get("http://live.guru99.com");
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		//System.out.println(driver.getTitle());
+
+		System.out.println(PageTitle.equals(driver.getTitle()));
+
+		
+		if (driver.getTitle().equals(PageTitle)) {
+			System.out.println("Navigated to home page - Verified : ok");
+		} else {
+			System.out.println("Navigated to home page - Verified  : Not ok");
+		}
+
+		String ExpTxt = driver.findElement(By.xpath("//h2[contains(text(),'This is demo site')]")).getText();
+		System.out.println(ExpTxt);
+		//2.Verify title of the page
+		if (ExpTxt.contains("This is demo site"))
+		{
+			System.out.println("Expected value displayed");
+		}
+		else
+		{
+			System.out.println("Expected value didn't displayed");
+		}
+		
+		//3. Click on Mobile link
+		driver.findElement(By.xpath("//a[@href='http://live.guru99.com/index.php/mobile.html']")).click();
+		
+		//4.Verify the mobile header
+		if (driver.findElement(By.xpath("//h1[text()='Mobile']")).isDisplayed())
+		{	
+			System.out.println("Mobile header is verifed: OK");
+		}
+		else
+		{
+			System.out.println("Mobile header is verifed: Not OK");
+		}
+	
+	Select sel = new Select(driver.findElement(By.xpath("//Select[@Title='Sort By']")));
+		sel.selectByValue("Name");
+	
+	}
+	
+}

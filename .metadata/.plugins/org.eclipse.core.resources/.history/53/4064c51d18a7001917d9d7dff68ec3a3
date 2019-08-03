@@ -1,0 +1,65 @@
+package com.magento.pages;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class MobilePage {
+
+	@FindBy(xpath="//div[normalize-space(text())='This is root of mobile']")
+	private WebElement mobileheadertxt;
+	
+	@FindBy(xpath="//select[@Title='Sort By']")
+	private WebElement sortBydropdown;
+	
+	@FindBy(id="product-collection-image-1")
+	private WebElement sonyImg;
+	
+	@FindBy(id="product-collection-image-2")
+	private WebElement iphoneImg;
+	
+	@FindBy(id="product-collection-image-3")
+	private WebElement samsungImg;
+	
+	@FindBy(xpath="//div[contains(text(), 'This is root of mobile')]")
+	private WebElement textLine;
+	
+	@FindBy(id="product-price-3")
+	private WebElement product_price_3_text;
+	
+	public WebElement sonyImg()
+	{
+		return sonyImg;
+	}
+
+	public WebElement samsungImg()
+	{
+		return samsungImg;
+	}
+	
+	public WebElement textLine()
+	{
+		return textLine;
+	}
+	
+//	public WebElement mobileheadertxt()
+//	{
+//			return mobileheadertxt;
+//	}
+
+
+	public WebElement mobileheadertxt() {
+		return mobileheadertxt;
+	}
+	
+	public WebElement sortBydropdown()
+	{
+		return sortBydropdown;
+	}
+	
+	public WebElement product_price_3_text() {
+		return product_price_3_text;
+	}
+	
+		
+
+}

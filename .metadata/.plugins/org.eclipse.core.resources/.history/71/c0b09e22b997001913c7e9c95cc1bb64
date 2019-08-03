@@ -1,0 +1,28 @@
+package com.magento.mobile;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Compare2Product {
+
+	public static void main(String[] args) {
+		
+		WebDriver driver = new FirefoxDriver();
+		driver.get("http://live.guru99.com");
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		
+		driver.findElement(By.xpath("//a[@href='http://live.guru99.com/index.php/mobile.html']")).click();
+		
+		driver.findElement(By.xpath("//a[@title='Sony Xperia' and @href='http://live.guru99.com/index.php/mobile/sony-xperia.html']/../../div[3]/ul[1]/li[2]/a[text()='Add to Compare']")).click();
+		
+		driver.findElement(By.xpath("//img[@id='product-collection-image-2']/../../div[1]/div[3]/ul[1]/li[2]/a[text()='Add to Compare']")).click();
+		
+		driver.findElement(By.xpath("//span[text()='Compare']")).click();
+		
+		
+	}
+}

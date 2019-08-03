@@ -1,0 +1,33 @@
+package com.magento.mobile;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class QuantityInCartTest {
+	public static void main(String[] args) {
+		
+		
+		WebDriver driver = new FirefoxDriver();
+		driver.get("http://live.guru99.com");
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+	
+		driver.findElement(By.xpath("//a[@href='http://live.guru99.com/index.php/mobile.html']")).click();
+		
+//		driver.findElement(By.xpath("//a[@href='http://live.guru99.com/index.php/mobile/sony-xperia.html']")).click();
+		
+		driver.findElement(By.xpath("//a[@title='Sony Xperia']/../../div[3]/button[@title='Add to Cart']")).click();
+		
+		driver.findElement(By.xpath("//input[@title='Qty']")).clear();
+		driver.findElement(By.xpath("//input[@title='Qty']")).sendKeys("1000");
+		
+		driver.findElement(By.xpath("//button[@title='Update']")).click();
+		
+		System.out.println(driver.findElement(By.xpath("//span[text()='Some of the products cannot be ordered in requested quantity.']")).isDisplayed());
+	
+	}
+
+}

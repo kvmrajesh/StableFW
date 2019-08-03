@@ -1,0 +1,91 @@
+package com.magento.mobile;
+
+import java.util.List;
+import java.util.TreeSet;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Test;
+
+import com.magento.generic.BaseTest;
+import com.magento.pages.HomePage;
+import com.magento.pages.MobilePage;
+
+public class Mobile_SortTest extends BaseTest {
+
+	public static String PageTitle = "Home page";
+
+	@Test
+	public static void sortTest() {
+
+		HomePage Hp = PageFactory.initElements(driver, HomePage.class);
+		MobilePage Mp = PageFactory.initElements(driver, MobilePage.class);
+//		WebDriver driver = new FirefoxDriver();
+//		
+//		driver.manage().window().maximize();
+//
+//		// 1.
+//		driver.get("http://live.guru99.com");
+//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		// System.out.println(driver.getTitle());
+
+		System.out.println(PageTitle.equals(driver.getTitle()));
+
+		if (driver.getTitle().equals(PageTitle)) {
+			System.out.println("Navigated to home page - Verified : ok");
+		} else {
+			System.out.println("Navigated to home page - Verified  : Not ok");
+		}
+
+		String ExpTxt = Hp.headertxt().getText();
+//		String ExpTxt = driver.findElement(By.xpath("//h2[contains(text(),'This is demo site')]")).getText();
+		System.out.println(ExpTxt);
+		// 2.Verify title of the page
+		if (ExpTxt.toLowerCase().contains("this is demo site")) {
+			System.out.println("Expected value displayed");
+		} else {
+			System.out.println("Expected value didn't displayed");
+		}
+
+		// 3. Click on Mobile link
+		Hp.mobileLink().click();
+//		driver.findElement(By.xpath("//a[@href='http://live.guru99.com/index.php/mobile.html']")).click();
+
+		// 4.Verify the mobile header
+
+//		if (driver.findElement(By.xpath("//h1[text()='Mobile']")).isDisplayed())
+		if (Mp.mobileheadertxt().isDisplayed()) {
+			System.out.println("Mobile header is verifed: OK");
+		} else {
+			System.out.println("Mobile header is verifed: Not OK");
+		}
+
+//		Select sel1 = new Select(driver.findElement(By.xpath("//select[@Title='Sort By']")));
+//		sel1.selectByVisibleText("Name");
+		Select sela = new Select( Mp.sortBydropdown());
+		sela.selectByVisibleText("Name");
+		TreeSet TS = new TreeSet();
+		List arr = sela.getOptions();
+		for(Object temp: arr)
+		{
+			System.out.println(temp);
+			TS.add(temp);
+		}
+		
+		for(Object temp: TS)
+		{
+			System.out.println(temp);
+		}
+		
+//		Select Sel2 = new Select(driver.findElement(By.xpath("//select[@title='Sort By']")));
+//		System.out.println(Sel2.getOptions());
+//		System.out.println(sel.getFirstSelectedOption());
+
+	}
+
+}
